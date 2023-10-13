@@ -56,25 +56,24 @@ class Animal
     }
 }
 
-# membuat object
-# kirimkan data hewan (array) ke constructor
-$animal = new Animal(["Sapi", "Kucing", "Panda"]);
+# object
+$animal = new Animal(["1. Ayam", "2. Ikan", "3. Harimau", "4. Macan"]);
 
 echo "Index - Menampilkan seluruh hewan <br>";
 $animal->index();
 echo "<br>";
 
 echo "Store - Menambahkan hewan baru <br>";
-$animal->store('burung');
+$animal->store('5. Kucing');
 $animal->index();
 echo "<br>";
 
-echo "Update - Mengupdate hewan <br>";
-$animal->update(0, 'Kucing Anggora');
+echo "Update - Mengupdate hewan kucing no.5<br>";
+$animal->update(4, '5. Kucing Anggora');
 $animal->index();
 echo "<br>";
 
-echo "Destroy - Menghapus hewan <br>";
-$animal->destroy(1);
+echo "Destroy - Menghapus hewan no.1 <br>";
+$animal->destroy(0);
 $animal->index();
 echo "<br>";
