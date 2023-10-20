@@ -57,6 +57,9 @@ class Animal
 }
 
 # object
+echo "Nama mahasiswa : Anggoro Seto";
+echo "<br> NIM : 0110222016" ;
+echo "<br> Kelas : 3SE02<br><br>";
 $animal = new Animal(["1. Ayam", "2. Ikan", "3. Harimau", "4. Macan"]);
 
 echo "Index - Menampilkan seluruh hewan <br>";
