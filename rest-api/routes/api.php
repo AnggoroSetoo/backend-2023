@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 # mengimport controller Student
 use App\Http\Controllers\StudentController;
+#Auth
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +19,25 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+#bungkus route dengan middleware sanctum
+Route::middleware('auth:sanctum')->group(function () {
+    # Method GET, route /students
+    Route::get('/students', [StudentController::class, 'index']);
+    # Create student
+    Route::post('/students', [StudentController::class, 'store']);
+    # Update student
+    Route::put('/students/{id}', [StudentController::class, 'update']);
+    # Delete student
+    Route::delete('/students/{id}', [StudentController::class, 'destroy']);
+    Route::get('/students/{id}', [StudentController::class, 'show']);
 });
 
-# Route animals
-Route::get('/animals', [AnimalController::class, 'index']);
-Route::post('/animals', [AnimalController::class, 'store']);
-Route::put('/animals/{id}', [AnimalController::class, 'update']);
-Route::delete('/animals/{id}', [AnimalController::class, 'destroy']);
+# untuk register dan login pake auth
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
-# Route students
-Route::get('/students', [StudentController::class, 'index']);
-Route::get('/students/{id}', [StudentController::class, 'show']);
-Route::post('/students', [StudentController::class, 'store']);
-Route::put('/students/{id}', [StudentController::class, 'update']);
-Route::delete('/students/{id}', [StudentController::class, 'destroy']);
+// # Route animals
+// Route::get('/animals', [AnimalController::class, 'index']);
+// Route::post('/animals', [AnimalController::class, 'store']);
+// Route::put('/animals/{id}', [AnimalController::class, 'update']);
+// Route::delete('/animals/{id}', [AnimalController::class, 'destroy']);
